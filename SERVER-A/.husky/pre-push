@@ -1,0 +1,5 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo "[HUSKY] Run Test"
+git diff HEAD --quiet && npm run test
