@@ -1,0 +1,31 @@
+{
+  "name": "LABORATORY-REDIS",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docker:build": "docker build -t node-redis-example-1:1.0.0 .",
+    "docker:run": "docker run -it -d -p 3000:3000 -e \"REDIS_SERVER_IP=172.17.0.2\" --name node-redis-example-1 node-redis-example-1:1.0.0",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://justalk: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@github.com/justalk/LABORATORY-REDIS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/justalk/LABORATORY-REDIS/issues"
+  },
+  "homepage": "https://github.com/justalk/LABORATORY-REDIS#readme",
+  "dependencies": {
+    "dotenv": "^12.0.3",
+    "express": "^4.17.2",
+    "ioredis": "^4.28.3",
+    "mongo-uri-builder": "^4.0.0",
+    "mongoose": "^6.1.6",
+    "redis": "^4.0.1"
+  }
+}

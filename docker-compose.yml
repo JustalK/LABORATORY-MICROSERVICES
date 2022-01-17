@@ -1,0 +1,85 @@
+version: "3.8"
+
+services:
+  redis-server:
+    build: ./redis-server
+    container_name: labo-redis
+    volumes:
+      - /mnt/c/redis-data:/redis-data
+    networks:
+      kevin-network:
+  nginx:
+    image: jwilder/nginx-proxy
+    container_name: labo-nginx
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      kevin-network:
+  mongodb1:
+    image: mongo:latest
+    container_name: labo-mongodb1
+    hostname: mongodb
+    volumes:
+        - ./mongodb1/init/:/docker-entrypoint-initdb.d/:ro
+        - ./mongodb1/data/db/:/data/db/
+        - ./mongodb1/data/log/:/var/log/mongodb/
+    environment:
+        MONGO_INITDB_ROOT_USERNAME: admin
+        MONGO_INITDB_ROOT_PASSWORD: test
+        MONGO_INITDB_DATABASE: test
+    ports:
+        - "28017:28017"
+    command: mongod --port 28017
+    networks:
+      kevin-network:
+  mongodb2:
+    image: mongo:latest
+    container_name: labo-mongodb2
+    hostname: mongodb
+    volumes:
+        - ./mongodb2/init/:/docker-entrypoint-initdb.d/:ro
+        - ./mongodb2/data/db/:/data/db/
+        - ./mongodb2/data/log/:/var/log/mongodb/
+    environment:
+        MONGO_INITDB_ROOT_USERNAME: admin
+        MONGO_INITDB_ROOT_PASSWORD: test
+        MONGO_INITDB_DATABASE: test
+    ports:
+        - "28018:28017"
+    command: mongod --port 28018
+    networks:
+      kevin-network:
+  server1:
+    build: ./server1
+    container_name: labo-server1
+    environment:
+      - REDIS_SERVER_IP=redis-server
+      - VIRTUAL_HOST=api.server1.net
+      - VIRTUAL_PORT=3000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - redis-server
+      - mongodb1
+    networks:
+      kevin-network:
+  server2:
+    build: ./server2
+    container_name: labo-server2
+    environment:
+      - REDIS_SERVER_IP=redis-server
+      - VIRTUAL_HOST=api.server2.net
+      - VIRTUAL_PORT=3000
+    ports:
+      - "3001:3000"
+    depends_on:
+      - redis-server
+      - mongodb2
+    networks:
+      kevin-network:
+networks:
+  kevin-network:
