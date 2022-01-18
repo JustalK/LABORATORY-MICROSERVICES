@@ -11,5 +11,8 @@ const model = require('../models/' + filename)
 module.exports = {
   insert: company => {
     return model.create(company)
+  },
+  getAll: () => {
+    return model.find()
   }
 }

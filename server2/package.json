@@ -27,5 +27,8 @@
     "mongo-uri-builder": "^4.0.0",
     "mongoose": "^6.1.6",
     "redis": "^4.0.1"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^6.0.0-alpha.3"
   }
 }

@@ -9,7 +9,12 @@ const path = require('path')
 const filename = path.basename(__filename, '.js')
 
 const schema = new mongoose.Schema({
-  name: {
+  firstname: {
+    type: String,
+    trim: true,
+    required: true
+  },
+  lastname: {
     type: String,
     trim: true,
     required: true
