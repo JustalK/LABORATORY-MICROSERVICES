@@ -63,6 +63,7 @@ services:
       - "3000:3000"
     depends_on:
       - mongodb1
+      - mongodb2
     networks:
       kevin-network:
   server2:
@@ -74,12 +75,13 @@ services:
     ports:
       - "3001:3000"
     depends_on:
+      - mongodb1
       - mongodb2
     networks:
       kevin-network:
   server3:
     build: ./server3
-    container_name: labo-server3
+    container_name: labo-gateway
     environment:
       - VIRTUAL_HOST=api.server3.net
       - VIRTUAL_PORT=3000
