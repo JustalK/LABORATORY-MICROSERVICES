@@ -6,7 +6,8 @@
 
 const express = require('express')
 const router = express.Router()
-const dbs = require('../dbs/test')
+const dbs = require('../dbs/action')
+const faker = require('@faker-js/faker')
 
 // Add an endpoint for testing the API
 router.get('/', async (request, response) => {
@@ -17,7 +18,7 @@ router.get('/', async (request, response) => {
 
 // Add an endpoint for testing the API
 router.get('/create', async (request, response) => {
-  const rsl = await dbs.insert({name: "test"})
+  const rsl = await dbs.insert({name: faker.lorem.word()})
   response.status(200).send(rsl)
 })
 

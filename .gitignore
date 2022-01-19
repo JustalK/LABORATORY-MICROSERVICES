@@ -37,3 +37,21 @@ server2/.cache
 server2/package-lock.json
 
 mongodb2/data
+
+# SERVER B
+server3/logs
+server3/*.log
+server3/npm-debug.log*
+server3/yarn-debug.log*
+server3/yarn-error.log*
+server3/lerna-debug.log*
+server3/coverage
+server3/*.lcov
+server3/.nyc_output
+server3/out
+server3/node_modules/
+server3/.npm
+server3/env
+server3/deploy_key
+server3/.cache
+server3/package-lock.json

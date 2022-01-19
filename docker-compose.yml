@@ -57,13 +57,11 @@ services:
     build: ./server1
     container_name: labo-server1
     environment:
-      - REDIS_SERVER_IP=redis-server
       - VIRTUAL_HOST=api.server1.net
       - VIRTUAL_PORT=3000
     ports:
       - "3000:3000"
     depends_on:
-      - redis-server
       - mongodb1
     networks:
       kevin-network:
@@ -71,14 +69,22 @@ services:
     build: ./server2
     container_name: labo-server2
     environment:
-      - REDIS_SERVER_IP=redis-server
       - VIRTUAL_HOST=api.server2.net
       - VIRTUAL_PORT=3000
     ports:
       - "3001:3000"
     depends_on:
-      - redis-server
       - mongodb2
+    networks:
+      kevin-network:
+  server3:
+    build: ./server3
+    container_name: labo-server3
+    environment:
+      - VIRTUAL_HOST=api.server3.net
+      - VIRTUAL_PORT=3000
+    ports:
+      - "3002:3000"
     networks:
       kevin-network:
 networks:
