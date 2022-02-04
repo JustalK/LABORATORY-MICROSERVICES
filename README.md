@@ -1,6 +1,5 @@
 # LABORATORY-MICROSERVICES
 
-
 ## Plan of the presentation
 
 - [Goal](#goal)
@@ -12,9 +11,13 @@
 
 ## Goal
 
-The goal of this project is to show how to handle two microservices in the same repository using docker.
+The goal of this project is to show how to handle two microservices in the same repository using docker. The microservices are communicating with each other using a rest gateway. The client can then only connect to the system using the public gateway.
+
+The good thing on this type of architecture is that the client does not need to query separately each services. It also make the whole structure easier to maintain.
 
 ## Organization
+
+![Alt text](documentation/schema.png?raw=true "MICROSERVICES")
 
 | Folder's Name | Description of the folder                               |
 | :------------ | :------------------------------------------------------ |
