@@ -1,13 +1,6 @@
 version: "3.8"
 
 services:
-  redis-server:
-    build: ./redis-server
-    container_name: labo-redis
-    volumes:
-      - /mnt/c/redis-data:/redis-data
-    networks:
-      kevin-network:
   nginx:
     image: jwilder/nginx-proxy
     container_name: labo-nginx
