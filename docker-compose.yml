@@ -49,6 +49,8 @@ services:
   server1:
     build: ./server1
     container_name: labo-server1
+    volumes:
+      - ./server1:/usr/src/app
     environment:
       - VIRTUAL_HOST=api.server1.net
       - VIRTUAL_PORT=3000

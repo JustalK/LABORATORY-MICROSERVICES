@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "docker:build": "docker build -t node-redis-example-1:1.0.0 .",
     "docker:run": "docker run -it -d -p 3000:3000 -e \"REDIS_SERVER_IP=172.17.0.2\" --name node-redis-example-1 node-redis-example-1:1.0.0",
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev:watch": "nodemon -L"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,8 @@
     "ioredis": "^4.28.3",
     "mongo-uri-builder": "^4.0.0",
     "mongoose": "^6.1.6",
+    "nodemon": "^2.0.15",
+    "npx": "^10.2.2",
     "redis": "^4.0.1"
   },
   "devDependencies": {
