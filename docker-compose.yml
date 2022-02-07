@@ -64,6 +64,8 @@ services:
   server2:
     build: ./server2
     container_name: labo-server2
+    volumes:
+      - ./server2:/usr/src/app
     environment:
       - VIRTUAL_HOST=api.server2.net
       - VIRTUAL_PORT=3000
@@ -77,6 +79,8 @@ services:
   server3:
     build: ./server3
     container_name: labo-gateway
+    volumes:
+      - ./server3:/usr/src/app
     environment:
       - VIRTUAL_HOST=api.server3.net
       - VIRTUAL_PORT=3000
